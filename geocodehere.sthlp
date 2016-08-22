@@ -184,7 +184,7 @@ Required ssc package: {help insheetjson}
 Simon Heß, Goethe University Frankfurt, ({browse "mailto:hess@econ.uni-frankfurt.de":hess@econ.uni-frankfurt.de}){p_end}
 
 {pstd}
-The latest version of geocodehere can always be obtained from {browse "http://HessS.org"}.{p_end}
+The latest version of geocodehere can always be obtained from {browse "https://github.com/simonheb/geocodehere"} or {browse "http://HessS.org"}.{p_end}
 
 {pstd}
 I am happy to receive comments and suggestions regarding bugs or possibilites for improvements/extensions.{p_end}
