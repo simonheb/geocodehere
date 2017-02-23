@@ -65,7 +65,7 @@
 {dlgtab:Credentials}
 
 {phang}
-{opt appkey(...)}  specify the HERE maps API app key. Credentials can be obtained through the HERE maps website, takes about three minutes and will be free for the most common uses with Stata (e.g. geo locating several hundred municipalities).
+{opt appcode(...)}  specify the HERE maps API app code/key. Credentials can be obtained through the HERE maps website, takes about three minutes and will be free for the most common uses with Stata (e.g. geo locating several hundred municipalities).
 More details are available under:
 {browse "https://developer.here.com/rest-apis/documentation/geocoder/common/credentials.html"}
 (most likely you'd have to select the consumer plan "Free") 
