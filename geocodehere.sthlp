@@ -12,7 +12,7 @@
 
 {p 8 17 2}
 {cmdab:geocodehere}
-{ifin}{cmd:,} appid( ... )  appkey( ... )  [{it:options}]
+{ifin}{cmd:,} appid( ... )  appcode( ... )  [{it:options}]
 
 
 
@@ -26,7 +26,7 @@
 {synopt:{opt noisily}} produce more terminal output while running {p_end}
 
 {syntab:Credentials (required)}
-{synopt:{opt appkey(...)}} HERE maps API app key (see below){p_end}
+{synopt:{opt appcode(...)}} HERE maps API app key (see below){p_end}
 {synopt:{opt appid(...)}} HERE maps API app ID (see below){p_end}
 
 {syntab:Response switches}
@@ -181,7 +181,7 @@ Required ssc package: {help insheetjson}
 {title:Author}
 
 {pstd}
-Simon He�, Goethe University Frankfurt, ({browse "mailto:hess@econ.uni-frankfurt.de":hess@econ.uni-frankfurt.de}){p_end}
+Simon Heß, Goethe University Frankfurt, ({browse "mailto:hess@econ.uni-frankfurt.de":hess@econ.uni-frankfurt.de}){p_end}
 
 {pstd}
 The latest version of geocodehere can always be obtained from {browse "http://HessS.org"}.{p_end}
@@ -193,6 +193,6 @@ I am happy to receive comments and suggestions regarding bugs or possibilites fo
 
 {pstd}
 Stata versions before Stata 14 are not able to handle unicode character encodings. As a result, response data from HERE containing special characters may appear partly
-scrambled (e.g. "Stra�e" => "Straße"). In some cases it helps to specify the option language(EN).
+scrambled (e.g. "Straße" => "StraÃŸe"). In some cases it helps to specify the option language(EN).
 Hints on how to solve this for older Stata versions are welcome.
 {p_end}
