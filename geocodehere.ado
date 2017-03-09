@@ -2,7 +2,7 @@
 * Changelog
 * 3.3 changed the "noisily" output (link to long to be shown as {browse "vfvf"}
 * 3.2 added language(...) option and match_code as return variable
-*Simon Heﬂ, 11.11.2015
+*Simon He√ü, 11.11.2015
 cap program drop geocodehere
 program geocodehere
     version 11.0
