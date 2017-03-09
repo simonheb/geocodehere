@@ -1,5 +1,5 @@
 {smcl}
-{* *! version 0.3.3 11.11.2015}{...}
+{* *! version 0.3.4 9.3.2017}{...}
 
 {title:Title}
 
@@ -65,14 +65,14 @@
 {dlgtab:Credentials}
 
 {phang}
-{opt appcode(...)}  specify the HERE maps API app code/key. Credentials can be obtained through the HERE maps website, takes about three minutes and will be free for the most common uses with Stata (e.g. geo locating several hundred municipalities).
+{opt appcode(...)}  specify the HERE maps API app key/code. Credentials can be obtained through the HERE maps website, takes about three minutes and will be free for the most common uses with Stata (e.g. geo locating several hundred municipalities).
 More details are available under:
 {browse "https://developer.here.com/rest-apis/documentation/geocoder/common/credentials.html"}
 (most likely you'd have to select the consumer plan "Free") 
 {p_end}
 
 {phang}
-{opt appid(...)}  specify the HERE maps API app ID. See appkey(...) {p_end}
+{opt appid(...)}  specify the HERE maps API app ID. See appcode(...) {p_end}
 
 
 {dlgtab:Response switches}
@@ -181,7 +181,7 @@ Required ssc package: {help insheetjson}
 {title:Author}
 
 {pstd}
-Simon Heß, Goethe University Frankfurt, ({browse "mailto:hess@econ.uni-frankfurt.de":hess@econ.uni-frankfurt.de}){p_end}
+Simon He�, Goethe University Frankfurt, ({browse "mailto:hess@econ.uni-frankfurt.de":hess@econ.uni-frankfurt.de}){p_end}
 
 {pstd}
 The latest version of geocodehere can always be obtained from {browse "https://github.com/simonheb/geocodehere"} or {browse "http://HessS.org"}.{p_end}
@@ -193,6 +193,6 @@ I am happy to receive comments and suggestions regarding bugs or possibilites fo
 
 {pstd}
 Stata versions before Stata 14 are not able to handle unicode character encodings. As a result, response data from HERE containing special characters may appear partly
-scrambled (e.g. "Straße" => "StraÃŸe"). In some cases it helps to specify the option language(EN).
+scrambled (e.g. "Stra�e" => "Straße"). In some cases it helps to specify the option language(EN).
 Hints on how to solve this for older Stata versions are welcome.
 {p_end}
