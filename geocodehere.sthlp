@@ -181,18 +181,17 @@ Required ssc package: {help insheetjson}
 {title:Author}
 
 {pstd}
-Simon Heﬂ, Goethe University Frankfurt, ({browse "mailto:hess@econ.uni-frankfurt.de":hess@econ.uni-frankfurt.de}){p_end}
+Simon He√ü, Goethe University Frankfurt.{p_end}
 
 {pstd}
 The latest version of geocodehere can always be obtained from {browse "https://github.com/simonheb/geocodehere"} or {browse "http://HessS.org"}.{p_end}
 
 {pstd}
-I am happy to receive comments and suggestions regarding bugs or possibilites for improvements/extensions.{p_end}
+I am happy to receive comments and suggestions regarding bugs or possibilites for improvements/extensions via {browse "https://github.com/simonheb/geocodehere/issues"}.{p_end}
 
 {title:Known issues with geocodehere}
 
 {pstd}
 Stata versions before Stata 14 are not able to handle unicode character encodings. As a result, response data from HERE containing special characters may appear partly
-scrambled (e.g. "Straﬂe" => "Stra√üe"). In some cases it helps to specify the option language(EN).
-Hints on how to solve this for older Stata versions are welcome.
+scrambled (e.g. "Straﬂe" != "Stra√üe"). In some cases it helps to specify the option language(EN).
 {p_end}
