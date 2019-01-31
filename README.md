@@ -5,7 +5,9 @@ Geocode locations in Stata using HERE maps (Nokia). It is required to obtain HER
 cost-free and takes only a few seconds, provided that you stay below 100,000 monthly transactions.
 
 The SSC version is outdated. To install the latest version from github write:
-# net describe geocodehere, from(https://raw.githubusercontent.com/simonheb/geocodehere/master/)
+```
+net describe geocodehere, from(https://raw.githubusercontent.com/simonheb/geocodehere/master/)
+```
 
 
 The git version is usually more up to date than the ssc version
