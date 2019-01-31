@@ -1,0 +1,5 @@
+﻿v 1.1.2
+d geocodehere - Geocoding using HERE maps
+d Author: Simon Heß, Goethe University Frankfurt, Germany
+f geocodehere.ado
+f geocodehere.sthlp

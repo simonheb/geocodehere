@@ -1,0 +1,3 @@
+﻿v 0.3.5
+d Author: Simon Heß, Goethe University Frankfurt
+p geocodehere - geocoding using HERE maps
