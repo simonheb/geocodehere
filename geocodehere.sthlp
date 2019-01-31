@@ -1,10 +1,10 @@
 {smcl}
-{* *! version 0.3.5 14.8.2017}{...}
+{* *! version 0.3.6 31.1.2019}{...}
 
 {title:Title}
 
 {phang}
-{bf:geocodehere} {hline 2} Geocode locations using HERE maps (Nokia). It is required to obtain HERE maps API credentials, which will be cost-free and takes only a few seconds, provided that you stay below 100,000 monthly transactions.
+{bf:geocodehere} {hline 2} Geocode locations using HERE maps (Nokia). It is required to obtain HERE maps API credentials, which will be cost-free and takes only a few seconds, provided that you stay below 250,000 monthly transactions.
 
 
 {marker syntax}{...}
@@ -181,7 +181,7 @@ Required ssc package: {help insheetjson}
 {title:Author}
 
 {pstd}
-Simon He√ü, Goethe University Frankfurt.{p_end}
+Simon Heﬂ, Goethe University Frankfurt.{p_end}
 
 {pstd}
 The latest version of geocodehere can always be obtained from {browse "https://github.com/simonheb/geocodehere"} or {browse "http://HessS.org"}.{p_end}

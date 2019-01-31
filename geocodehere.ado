@@ -1,5 +1,6 @@
-*Version 0.3.5
+*Version 0.3.6
 * Changelog
+* 3.6 packaged for SSC and updated help file
 * 3.5 added unicode support through urlencode taken from http://fmwww.bc.edu/repec/bocode/l/libjson_source.mata
 * 3.4 helpfile update
 * 3.3 changed the "noisily" output (link to long to be shown as {browse "vfvf"}
@@ -14,7 +15,7 @@ program geocodehere
 	syntax [if] [in], [REPlace] [NOIsily] [searchtext(string)] appcode(string) appid(string) [country(string)] [state(string)] [county(string)] [countryfocus(string)] [city(string)] [district(string)] [street(string)] [housenumber(string)] [postalcode(string)] [language(string)]
 	marksample touse
 	
-	quietly `noisily' di "GEOCODEHERE Version: 0.3.5"
+	quietly `noisily' di "GEOCODEHERE Version: 0.3.6"
 	
 	local continue = 1
 	
