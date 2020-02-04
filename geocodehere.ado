@@ -1,18 +1,19 @@
-*Version 0.3.6
+*Version 0.3.7
 * Changelog
+* 3.7 apikey instead of app_id and appcode
 * 3.6 packaged for SSC and updated help file
 * 3.5 added unicode support through urlencode taken from http://fmwww.bc.edu/repec/bocode/l/libjson_source.mata
 * 3.4 helpfile update
 * 3.3 changed the "noisily" output (link to long to be shown as {browse "vfvf"}
 * 3.2 added language(...) option and match_code as return variable
-*Simon He�/Heß, 14.8.2017
+*Simon Heß/Heß, 14.8.2017
 cap program drop geocodehere
 //this code is from http://fmwww.bc.edu/repec/bocode/l/libjson_source.mata
 cap mata: string scalar urlencodeforjson(string scalar s) { res = J(1,0,.); a=ascii(s); for(c=1;c<=cols(a); c++) { if ((a[c]>=44 && a[c]<=59) || (a[c]>=64 && a[c]<=122)) { res=(res,a[c]);} else { h1 = floor(a[c]/16); h2 = mod(a[c],16); if (h1<10) {h1=h1+48;} else {h1=h1+55;}  if (h2<10) {h2=h2+48;} else {h2=h2+55;} res=(res, 37, h1,h2);} } return(char(res));}  
 
 program geocodehere
     version 11.0
-	syntax [if] [in], [REPlace] [NOIsily] [searchtext(string)] appcode(string) appid(string) [country(string)] [state(string)] [county(string)] [countryfocus(string)] [city(string)] [district(string)] [street(string)] [housenumber(string)] [postalcode(string)] [language(string)]
+	syntax [if] [in], [REPlace] [NOIsily] [searchtext(string)] [appcode(string) appid(string)] apikey(string) [country(string)] [state(string)] [county(string)] [countryfocus(string)] [city(string)] [district(string)] [street(string)] [housenumber(string)] [postalcode(string)] [language(string)]
 	marksample touse
 	
 	quietly `noisily' di "GEOCODEHERE Version: 0.3.6"
@@ -37,20 +38,23 @@ program geocodehere
 			di  "Please either remove/rename or run geocodehere with the replace option" //aside from casting an error, also tell the user how to fix it.
 		}
 	}
-	
+	if ("`app_key'`app_code'"!="") {
+			di  as err "{HERE maps stopped using appids and appcodes, please use apikey instead. see }"
+			di `"see {browse "https://developer.here.com/documentation/authentication/dev_guide/topics/api-key-credentials.html"}."'
+	}
 	****Does the connection to the server work? Let me run a fake request to find out
 	tempfile data	//save the current dataset
 	qui save `data', replace
 	clear	
 	tempfile test 
 	//run a fake request, looking for a place called "Witzenhausen" and saving the result in a tempfile called test
-	qui insheetjson using  "http://geocoder.cit.api.here.com/6.2/geocode.json?app_id=`appid'&app_code=`appcode'&language=`language'&gen=8&searchtext=Witzenhausen&responseattributes=matchCode", savecontents(`test')
+	qui insheetjson using  "https://geocoder.ls.hereapi.com/search/6.2/geocode.json?apiKey=`apikey'&language=`language'&gen=8&searchtext=Witzenhausen&responseattributes=matchCode", savecontents(`test')
 	qui infile a using  "`test'", clear
 	cap desc a
 	if _rc!=0 { //if this produced no valid file: cast an error, and give the user the opportunity to figure out why
 		local continue = 0
 		di "{err: Connection to the server failed}"
-		di `"Try visiting {browse "http://geocoder.cit.api.here.com/6.2/geocode.json?app_id=`appid'&app_code=`appcode'&gen=8&language=`language'&searchtext=Witzenhausen&responseattributes=matchCode"} to figure out why this failed."'
+		di `"Try visiting {browse "https://geocoder.ls.hereapi.com/search/6.2/geocode.json?apiKey=`apikey'&gen=8&language=`language'&searchtext=Witzenhausen&responseattributes=matchCode"} to figure out why this failed."'
 	}
 	qui use `data', clear
 	
@@ -133,7 +137,7 @@ program geocodehere
 					mata: st_local("countryfocus__",urlencodeforjson(st_local("countryfocus__")))
 					mata: st_local("language",urlencodeforjson(st_local("language")))
 					mata: st_local("searchtext__",urlencodeforjson(st_local("searchtext__")))
-					local link = "http://geocoder.cit.api.here.com/6.2/geocode.json?app_id=`appid'&app_code=`appcode'&responseattributes=matchCode&country=`country__'&state=`state__'&county=`county__'&city=`city__'&district=`district__'&street=`street__'&housenumber=`housenumber__'&postalCode=`postalcode__'&countryfocus=`countryfocus__'&language=`language'&gen=8&searchtext=`searchtext__'"
+					local link = "https://geocoder.ls.hereapi.com/search/6.2/geocode.json?apiKey=`apikey'&responseattributes=matchCode&country=`country__'&state=`state__'&county=`county__'&city=`city__'&district=`district__'&street=`street__'&housenumber=`housenumber__'&postalCode=`postalcode__'&countryfocus=`countryfocus__'&language=`language'&gen=8&searchtext=`searchtext__'"
 					`noisily' di   " `link'"
 					`noisily' insheetjson  geocodehere_country  geocodehere_lon  geocodehere_lat   geocodehere_label geocodehere_match_level geocodehere_match_code   geocodehere_locationtype geocodehere_county geocodehere_city geocodehere_district geocodehere_street geocodehere_housenumber geocodehere_postalcode using "`link'" , flatten tableselector("Response") columns("View:1:Result:1:Location:Address:Country" "View:1:Result:1:Location:DisplayPosition:Longitude" "View:1:Result:1:Location:DisplayPosition:Latitude"	"View:1:Result:1:Location:Address:Label" "View:1:Result:1:MatchLevel" "View:1:Result:1:MatchCode"  "View:1:Result:1:Location:LocationType" "View:1:Result:1:Location:Address:County" "View:1:Result:1:Location:Address:City" "View:1:Result:1:Location:Address:District"	 "View:1:Result:1:Location:Address:Street"	 "View:1:Result:1:Location:Address:HouseNumber"	 "View:1:Result:1:Location:Address:PostalCode" ) replace
 					save `coordinates', replace

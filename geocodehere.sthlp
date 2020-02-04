@@ -12,10 +12,7 @@
 
 {p 8 17 2}
 {cmdab:geocodehere}
-{ifin}{cmd:,} appid( ... )  appcode( ... )  [{it:options}]
-
-
-
+{ifin}{cmd:,} apikey( ... )    [{it:options}]
 
 
 {synoptset 20 tabbed}{...}
@@ -26,8 +23,7 @@
 {synopt:{opt noisily}} produce more terminal output while running {p_end}
 
 {syntab:Credentials (required)}
-{synopt:{opt appcode(...)}} HERE maps API app key (see below){p_end}
-{synopt:{opt appid(...)}} HERE maps API app ID (see below){p_end}
+{synopt:{opt apikey(...)}} HERE maps API key (see below){p_end}
 
 {syntab:Response switches}
 {synopt:{opt language(...)}} Specifies the language for returned string variables {p_end}
@@ -65,14 +61,11 @@
 {dlgtab:Credentials}
 
 {phang}
-{opt appcode(...)}  specify the HERE maps API app key/code. Credentials can be obtained through the HERE maps website, takes about three minutes and will be free for the most common uses with Stata (e.g. geo locating several hundred municipalities).
+{opt apikey(...)}  specify the HERE maps API  key. Credentials can be obtained through the HERE maps website, takes about three minutes and will be free for the most common uses with Stata (e.g. geo locating several hundred municipalities).
 More details are available under:
-{browse "https://developer.here.com/rest-apis/documentation/geocoder/common/credentials.html"}
-(most likely you'd have to select the consumer plan "Free") 
+{browse "https://developer.here.com/pricing"}
+(most likely you'd have to select the consumer plan "Freemium") 
 {p_end}
-
-{phang}
-{opt appid(...)}  specify the HERE maps API app ID. See appcode(...) {p_end}
 
 
 {dlgtab:Response switches}
@@ -164,7 +157,7 @@ This example code creates a data set of three entirely different localites. Befo
 {stata `"gen searchtext = "Elephant Walk, Accra, Ghana" in 3"'}
 {p_end}
 {phang}
-{stata `"geocodehere, appid(Your HERE maps app id) appcode(Your HERE maps app code) postalcode(postalcode) street(street) housenumber(housenumber) searchtext(searchtext)"'} 
+{stata `"geocodehere, apikey(Your HERE maps API key) postalcode(postalcode) street(street) housenumber(housenumber) searchtext(searchtext)"'} 
 {p_end}
 
 {title:See also}
@@ -181,7 +174,7 @@ Required ssc package: {help insheetjson}
 {title:Author}
 
 {pstd}
-Simon He�, Goethe University Frankfurt.{p_end}
+Simon Heß, Goethe University Frankfurt.{p_end}
 
 {pstd}
 The latest version of geocodehere can always be obtained from {browse "https://github.com/simonheb/geocodehere"} or {browse "http://HessS.org"}.{p_end}
@@ -193,5 +186,5 @@ I am happy to receive comments and suggestions regarding bugs or possibilites fo
 
 {pstd}
 Stata versions before Stata 14 are not able to handle unicode character encodings. As a result, response data from HERE containing special characters may appear partly
-scrambled (e.g. "Stra�e" != "Straße"). In some cases it helps to specify the option language(EN).
+scrambled (e.g. "Straße" != "StraÃŸe"). In some cases it helps to specify the option language(EN).
 {p_end}
