@@ -1,7 +1,7 @@
 # geocodehere
 
 
-Geocode locations in Stata using HERE maps (Nokia). It is required to obtain HERE maps API credentials, which will be
+Geocode locations in Stata using HERE maps. It is required to obtain HERE maps API credentials, which will be
 cost-free and takes only a few seconds, provided that you stay below 100,000 monthly transactions.
 
 The SSC version is outdated. To install the latest version from github write:
