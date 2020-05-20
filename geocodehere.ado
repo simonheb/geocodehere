@@ -1,4 +1,4 @@
-*Version 0.3.7
+*! version 0.3.7
 * Changelog
 * 3.7 apikey instead of app_id and appcode
 * 3.6 packaged for SSC and updated help file
@@ -6,7 +6,7 @@
 * 3.4 helpfile update
 * 3.3 changed the "noisily" output (link to long to be shown as {browse "vfvf"}
 * 3.2 added language(...) option and match_code as return variable
-*Simon Heß/Heß, 14.8.2017
+*Simon Heß, 14.8.2017
 cap program drop geocodehere
 //this code is from http://fmwww.bc.edu/repec/bocode/l/libjson_source.mata
 cap mata: string scalar urlencodeforjson(string scalar s) { res = J(1,0,.); a=ascii(s); for(c=1;c<=cols(a); c++) { if ((a[c]>=44 && a[c]<=59) || (a[c]>=64 && a[c]<=122)) { res=(res,a[c]);} else { h1 = floor(a[c]/16); h2 = mod(a[c],16); if (h1<10) {h1=h1+48;} else {h1=h1+55;}  if (h2<10) {h2=h2+48;} else {h2=h2+55;} res=(res, 37, h1,h2);} } return(char(res));}  
