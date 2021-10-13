@@ -157,7 +157,7 @@ This example code creates a data set of three entirely different localites. Befo
 {stata `"gen searchtext = "Elephant Walk, Accra, Ghana" in 3"'}
 {p_end}
 {phang}
-{stata `"geocodehere, apikey(Your HERE maps API key) postalcode(postalcode) street(street) housenumber(housenumber) searchtext(searchtext)"'} 
+{stata `"geocodehere, apikey(Your HERE maps API key) appid(You API ID here) postalcode(postalcode) street(street) housenumber(housenumber) searchtext(searchtext)"'} 
 {p_end}
 
 {title:See also}
